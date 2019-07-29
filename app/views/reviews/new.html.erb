@@ -1,1 +1,35 @@
-投稿します
+
+<div class="container">  
+        <div class="row mb-5">
+            <div class="col-2">
+                <button type="button" class="btn btn-primary mb-12" data-toggle="modal" data-target="#testModal">ボタンで開く</button>
+
+<%= form_for [@product, @review] do |f| %>
+  <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header" style="background-color:yellow;">
+                  <h4 >Review</h4>
+              </div>
+              <div class="modal-header">
+                  <div style="margin: 8px 0">
+                    <%= f.label :rate, 'スコア', style: { 'margin-right' => 8 } %>
+                    <%= f.number_field :rate, placeholder: 'スコア',step: 0.1, value: 3, max: 5, min: 1, html: { class: "search__query", style: 'text-align: right;' } %>  
+                    <%= f.range_field :rate, max: "5",min: "1", step: "0.1", id: "slider", value: "3"%>
+                  </div>
+              </div>
+              <div class="modal-body">
+                  <div style="margin: 8px 0">
+                    <%= f.text_area :review, placeholder: 'レビュー無記名でも投稿できます', style: 'width: 100%;height: 300px;' %>
+                  </div>      
+              </div>
+              <div class="modal-footer">
+                  <%= button_tag type: "submit", class: "btn btn--block" do %>
+                      投稿する<i class="icon-arrow-right"></i>
+                      <% end %>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+              </div>
+          </div>
+      </div>
+  </div>
+<% end %>

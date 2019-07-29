@@ -1,0 +1,117 @@
+html{
+  background-color:#4e5963;
+}
+.main{
+  background-color:#4e5963;
+  margin-top:56px;
+}
+
+.col-md-12{
+  top:100px;
+}
+i.icon-crown color-gray-light{
+  font-size: 20px;
+}
+h4{
+  text-align: center;
+}
+
+.jumbotron{
+  display:flex;
+}
+
+.new_review{
+  top:100px;
+}
+
+#main_cnt_wrapper{
+  padding-top:100px;
+}
+
+.search_view{
+  padding-top:80px;
+}
+.jumbotron{
+  margin-top:56px;
+}
+
+.allcontent{
+  height: calc(100vh - 56px);
+  width: 100vw;
+  background-color:white;
+  margin-top: 56px;
+  display: flex;
+}
+.sidecontent{
+  height: 100%;
+  width: 200px;
+  background-color:#555555
+}
+
+.image_content{
+  padding-top:20px;
+  padding-left:15px;
+}
+.avatar{
+  margin: 0 auto ;
+  height:80px;
+  width:80px;
+}
+
+h2 span{
+  font-size:10px;
+  float:right;
+}
+
+ul{
+  list-style: none;
+}
+
+.card-img{
+  height:200px;
+  width:100px;
+}
+.reviewcontent{
+  height: 100%;
+  width: calc(100vw - 200px);
+  padding: 30px 30px;
+}
+
+.card{
+  margin-top:20px;
+}
+
+.card-title{
+  font-size:15px;
+}
+.card-text{
+  font-size:10px;
+}
+
+.img-responsive{
+  border-radius: 50%;
+}
+
+
+.btn-group{
+  background-color:white;
+}
+
+.card-body{
+  background-color:#ffe100;
+}
+
+
+.icon::before {
+  display: inline-block;
+  margin-right: .5em;
+  font-family: fontawesome;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: none;
+  font-size:20px;
+  margin:0 auto;
+  color:black;
+}
+
+

@@ -1,0 +1,5 @@
+var par = $("#product-<%= @product.id %>").parent();
+par.attr('action', "<%= product_likes_path(@product.id) %>");
+par.attr('method', 'POST');
+par.html("<%= j(render partial: 'likes/like', locals: { product: @product, likes: @likes, like: @like }) %>");
+

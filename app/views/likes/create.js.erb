@@ -1,0 +1,5 @@
+var par = $("#product-<%= @product.id %>").parent();
+par.attr('action', "<%= product_like_path(@product.id, @like.id) %>");
+par.attr('method', 'delete');
+par.html("<%= j(render partial: 'likes/like', locals: { product: @product, likes: @likes, like: @like}) %>");
+
