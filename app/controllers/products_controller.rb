@@ -4,12 +4,18 @@ class ProductsController < ApplicationController
     @products = Product.order('id ASC').page(params[:page]).per(18)
     product_ids = Review.group(:product_id).order('count_product_id DESC').limit(5).count(:product_id).keys
     @ranking = product_ids.map { |id| Product.find(id) }
-    @product = @products.find(1)
+    @product =Product.find(1)
     @review = Review.new
+    # @res = Amazon::Ecs.item_search("検索したいキーワード",
+    #   :search_index   => 'Books',
+    #   :response_group => 'Medium',
+    #   :country        => 'jp'
+    # )
   end
 
+  
   def show
-    @products = Product.find(params[:id])
+    @product = Product.find(params[:id])
   end
 
   def search

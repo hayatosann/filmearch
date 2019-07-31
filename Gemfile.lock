@@ -44,6 +44,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
+    amazon-ecs (2.6.0)
+      nokogiri (~> 1.10)
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -264,6 +266,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  amazon-ecs
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)

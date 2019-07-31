@@ -2,24 +2,25 @@
 <div class="col-md-12">
   <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
     <div class="col-auto d-none d-lg-block">
-     <img src="<%= @products.image_url %>" alt="<%= @products.title %>">
+     <img src="<%= @product.image_url %>" alt="<%= @product.title %>">
     </div>
     <div class="col p-4 d-flex flex-column position-static">
       <h4 strong class="d-inline-block mb-2 text-primary">Title</h4>
-      <h4 class="mb-0"><%=@products.title%></h3>
-      <div class="mb-1 text-muted"><%=@products.open_date%></div>
+      <h4 class="mb-0"><%=@product.title%></h3>
+      <div class="mb-1 text-muted"><%=@product.open_date%></div>
       <p class="card-text mb-auto">
         第二次世界大戦時、ドイツ軍が誇った世界最強の暗号＜エニグマ＞。
         世界の運命は、解読不可能と言われた暗号解読に挑んだ、一人の天才数学者アラン・チューリングに託された。
         英国政府が50年間隠し続けた、一人の天才の真実の物語。時代に翻弄された男の秘密と数奇な人生とは――？!
       </p>
       <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#testModal"><i class="fa fa-paint-brush fa-lg">
-      <a href="/products/<%= @products.id %>/reviews/new" class="stretched-link">Go to review</a></i></button>
+      <a href="/products/<%= @product.id %>/reviews/new" class="stretched-link"></a></i></button>
     </div>
   </div>
   
-  <% @products.reviews.each do |review| %>
-    <div class="card" style="width: 18rem;">
+  <% @product.reviews.each do |review| %>
+    <div class="card" style="width: 18rem; margin:0 auto; margin-bottom:20px;">
+    
       <div class="card-body">
         <h5 class="card-title">評価: <%=review.rate%></h5>
         <p class="card-text"><%=review.review%></p>
