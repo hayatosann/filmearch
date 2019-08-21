@@ -44,24 +44,23 @@ class Scraping
     end
   end
     
-   def self.get_product(link)
+   def self.get_product
     agent = Mechanize.new
     agent.user_agent_alias = 'Windows Mozilla'
-    page = agent.get(link)
-    title = page.search('.p-content-detail__title span').inner_text if page.search('.p-content-detail__title span')
-    image_url = page.at('.c-content__jacket img')[:src] if page.at('.c-content__jacket img')
-    open_date = page.at('.p-content-detail__other-info-title').inner_text.match(/\d+年\d+月\d+日/) if page.at('.p-content-detail__other-info-title')
-    director = page.at('.c-label').inner_text if page.at('.c-label')
-    detail = page.at("#js-content-detail-synopsis").inner_text
-    product = Product.where(title: title).first_or_initialize
-    product.title = title
-    product.image_url = image_url
-    product.open_date = open_date
-    product.director = director
-    product.save
-    puts detail
-    # puts title
-    # puts image_url
+    page = agent.get(https://www.navitime.co.jp/category/0106001/13/)
+    title = page.search('.spot_name').inner_text 
+    image_url = page.at('.address_name').inner_text
+    
+    
+    # product = Product.where(title: title).first_or_initialize
+    # product.title = title
+    # product.image_url = image_url
+    # product.open_date = open_date
+    # product.director = director
+    # product.save
+    # puts detail
+     puts title
+     puts image_url
     # puts open_data
     # puts director
    end
