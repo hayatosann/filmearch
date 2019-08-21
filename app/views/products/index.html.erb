@@ -1,4 +1,4 @@
-<main role="main">
+
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron" style="background:#ffe100;">
   <div class="container">
@@ -43,13 +43,45 @@
             <h5 class="mb-0"><%=product.title%></h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             <div class="d-flex justify-content-between align-items-center">
+            
               <div class="btn-group">
+              <%if user_signed_in?%>
                 <button type="button" class="btn btn-sm btn-outline-secondary">
                 <a class="icon fa-eye" href="/products/<%= product.id %>"></a></button>
-                <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#testModal"><i class="fa fa-paint-brush fa-lg"></i></button>
-                
+                <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#Modal<%= product.id %>"><i class="fa fa-paint-brush fa-lg"></i></button>
+              <%end%>
+                <%= form_for @review,url:product_reviews_path(product.id) do |f| %>
+                  <div class="modal fade" id="Modal<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header" style="background-color:yellow;">
+                                <h4>Review</h4>    
+                              </div>
+                              <div class="modal-header" style="background-color:#555;">
+                                <div style="margin: 8px 0">
+                                  <%= f.label :rate, 'score', style: { 'margin-right' => 8 } %>
+                                  <div class="range">
+                                    <%= f.range_field :rate, max: "5",min: "1", step: "0.1", value: "3" %>
+                                    <span id="value">3</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="modal-body">
+                                <div style="margin: 8px 0">
+                                  <%= f.text_area :review, placeholder: 'レビュー無記名でも投稿できます', style: 'width: 100%;height: 300px;' %>
+                                </div>      
+                              </div>
+                              <div class="modal-footer">
+                                  <%= button_tag type: "submit", class: "btn btn--block" do %>
+                                      投稿する<i class="icon-arrow-right"></i>
+                                      <% end %>
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                <% end %>
                 <div class="btn btn-sm btn-outline-secondary">
-                <div id="#product-<%= @product.id %>"></div>
                 <%= render partial: "likes/like", locals: { product: product } %>
                 </div>
               </div>
@@ -67,43 +99,22 @@
   <%= paginate(@products) %>
 </div>
 
-</main>
-
 
 
 <footer class="container">
 <p>© SasanoCompany 2019/07/20</p>
 </footer>
 
-
-
-<%= form_for [@product, @review] do |f| %>
-  <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header" style="background-color:yellow;">
-                  <h4 >Review</h4>
-              </div>
-              <div class="modal-header" style="background-color:#555;">
-                  <div style="margin: 8px 0">
-                    <%= f.label :rate, 'スコア', style: { 'margin-right' => 8 } %>
-                    <%= f.number_field :rate, placeholder: 'スコア',step: 0.1, value: 3, max: 5, min: 1, html: { class: "search__query", style: 'text-align: right;' } %>  
-                    <%= f.range_field :rate, max: "5",min: "1", step: "0.1", id: "slider", value: "3"%>
-                  </div>
-              </div>
-              <div class="modal-body">
-                  <div style="margin: 8px 0">
-                    <%= f.text_area :review, placeholder: 'レビュー無記名でも投稿できます', style: 'width: 100%;height: 300px;' %>
-                  </div>      
-              </div>
-              <div class="modal-footer">
-                  <%= button_tag type: "submit", class: "btn btn--block" do %>
-                      投稿する<i class="icon-arrow-right"></i>
-                      <% end %>
-                  <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-              </div>
-          </div>
-      </div>
-  </div>
-<% end %>
-
+<script>
+  var elem = document.getElementsByClassName('range');
+  var rangeValue = function (elem, target) {
+    return function(evt){
+      target.innerHTML = elem.value;
+    }
+  }
+  for(var i = 0, max = elem.length; i < max; i++){
+    bar = elem[i].getElementsByTagName('input')[0];
+    target = elem[i].getElementsByTagName('span')[0];
+    bar.addEventListener('input', rangeValue(bar, target));
+  }
+</script>
