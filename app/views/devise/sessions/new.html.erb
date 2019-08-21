@@ -1,31 +1,14 @@
 
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="container login-container">
+  <div class="container login-container" >
     <div class="row">
-        <div class="col-md-6 login-form-1">
-            <h3>Login for Form 1</h3>
+        <div class="col-md-10 login-form-1">
+            <h3>Login for Form </h3>
             <form>
                 <div class="form-group">
                   <br />
                   <br />
-                  <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "Your Email *",class: "form-control",value: ""%>
-                </div>
-                <div class="form-group">
-                  <%= f.password_field :password, autocomplete: "current-password",placeholder: "Your Password *",class: "form-control",value: "" %>
-                </div>
-                <div class="form-group">
-                  <%= f.submit "Log in",class: "btnSubmit",value: "Login" %>
-                </div>
-                <div class="form-group">
-                  <%= render "devise/shared/links"%>
-                </div>
-            </form>
-        </div>
-        <div class="col-md-6 login-form-2">
-            <h3>Login for Form 2</h3>
-            <form>
-                <div class="form-group">
                   <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "Your Email *",class: "form-control",value: ""%>
                 </div>
                 <div class="form-group">
