@@ -114,5 +114,12 @@ ul{
   color:black;
 }
 
-
+.delete{
+  float:right;
+  color:white;
+  text-decoration: none;
+}
+.delete:hover{
+  text-decoration: none;
+}
 
