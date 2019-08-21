@@ -109,6 +109,11 @@ GEM
     ffi (1.11.1)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
+    geocoder (1.5.1)
+    geokit (1.13.1)
+    geokit-rails (2.3.1)
+      geokit (~> 1.5)
+      rails (>= 3.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     http-cookie (1.0.3)
@@ -137,6 +142,7 @@ GEM
     loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
+    magnific-popup-rails (1.1.0)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
@@ -275,9 +281,12 @@ DEPENDENCIES
   compass-rails (= 3.1.0)
   devise
   font-awesome-rails
+  geocoder
+  geokit-rails
   jbuilder (~> 2.5)
   kaminari
   listen (>= 3.0.5, < 3.2)
+  magnific-popup-rails (~> 1.1.0)
   mechanize
   mini_magick
   mysql2 (= 0.5.2)
