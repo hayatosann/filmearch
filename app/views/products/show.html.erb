@@ -1,5 +1,5 @@
 
-<div class="col-md-12">
+<div class="col-md-10">
   <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
     <div class="col-auto d-none d-lg-block">
      <img src="<%= @product.image_url %>" alt="<%= @product.title %>">
@@ -13,18 +13,71 @@
         世界の運命は、解読不可能と言われた暗号解読に挑んだ、一人の天才数学者アラン・チューリングに託された。
         英国政府が50年間隠し続けた、一人の天才の真実の物語。時代に翻弄された男の秘密と数奇な人生とは――？!
       </p>
-      <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#testModal"><i class="fa fa-paint-brush fa-lg">
-      <a href="/products/<%= @product.id %>/reviews/new" class="stretched-link"></a></i></button>
+      
+      <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#Modal<%=@product.id %>"><i class="fa fa-paint-brush fa-lg"></i></button>
     </div>
   </div>
+
+ <%= form_for @review,url:product_reviews_path(@product.id) do |f| %>
+  <div class="modal fade" id="Modal<%=@product.id %>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header" style="background-color:yellow;">
+                <h4>Review</h4>    
+              </div>
+              <div class="modal-header" style="background-color:#555;">
+                <div style="margin: 8px 0">
+                  <%= f.label :rate, 'スコア', style: { 'margin-right' => 8 } %>
+                  <div class="range">
+                    <%= f.range_field :rate, max: "5",min: "1", step: "0.1", value: "3" %>
+                    <span id="value">3</span>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div style="margin: 8px 0">
+                  <%= f.text_area :review, placeholder: 'レビュー無記名でも投稿できます', style: 'width: 100%;height: 300px;' %>
+                </div>      
+              </div>
+              <div class="modal-footer">
+                  <%= button_tag type: "submit", class: "btn btn--block" do %>
+                      投稿する<i class="icon-arrow-right"></i>
+                      <% end %>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+              </div>
+          </div>
+      </div>
+  </div>
+<% end %>
+
+<script>
+  var elem = document.getElementsByClassName('range');
+  var rangeValue = function (elem, target) {
+    return function(evt){
+      target.innerHTML = elem.value;
+    }
+  }
+  for(var i = 0, max = elem.length; i < max; i++){
+    bar = elem[i].getElementsByTagName('input')[0];
+    target = elem[i].getElementsByTagName('span')[0];
+    bar.addEventListener('input', rangeValue(bar, target));
+  }
+</script>
+
+
+
   
   <% @product.reviews.each do |review| %>
-    <div class="card" style="width: 18rem; margin:0 auto; margin-bottom:20px;">
-    
-      <div class="card-body">
-        <h5 class="card-title">評価: <%=review.rate%></h5>
-        <p class="card-text"><%=review.review%></p>
+    <div class="card" style="width: 30rem; margin:0 auto; margin-bottom:20px; background-color:#343a40!important;">
+     <p style="font-size:20px; color:white; padding-left:20px;"><%=review.user.nickname%></p>
+      <div class="card-body" style="margin-top:0;">
+        <h5 class="card-title">Rate: <%=review.rate%></h5>
+        <p class="card-text">Review:<%=review.review%></p>
         <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-thumbs-up "><a href="#" class="card-link"></a></i></button>
+        <%= link_to "/products/#{review.product.id}/reviews/#{review.id}", method: :delete,class: "delete",data: { confirm: '削除しますか？' } do%>
+          <i class="fa fa-trash"></i> 
+        <%# <%= link_to '編集', "/products/#{review.product.id}/reviews/#{review.id}/edit", method: :get %> 
+        <% end %>
       </div>
     </div>
   <%end%>
