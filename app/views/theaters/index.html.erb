@@ -1,0 +1,173 @@
+<div class="currentLocation">
+  <button type="button" class="btn btn-sm btn-outline-secondary">現在地から探す</button>
+</div>
+
+<script>
+class @CurrentLocations
+  @getCurrentLocation: 
+    $('.currentLocation').on 'click', 
+      if navigator.geolocation
+        navigator.geolocation.getCurrentPosition(successGetPosition, failGetPosition, options)
+      else
+        message = 'ご使用中のブラウザは現在地検索に対応されておりません。'
+        Alert.set('warning', message)
+
+  successGetPosition = (position) 
+    window.location.href = "/shops/searches?latitude=#{position.coords.latitude}&longitude=#{position.coords.longitude}"
+
+  options =
+    enableHighAccuracy: true
+
+  failGetPosition = (error) 
+    switch error.code
+      when 1
+        message = '位置情報の提供を許可してください。'
+      when 2
+        message = '位置情報の取得に失敗しました。'
+    Alert.set('warning', message)
+</script>
+
+
+
+
+
+
+  <div class="Look">
+    <p>近くの映画館を探す</p>
+  </div>
+
+  <div class="tag">
+    <form onsubmit="return false;"> 
+        <input type="text" value="三宮駅" id="address" placeholder="施設名"> 
+        <button type="button" value="検索" id="map_button">検索</button>
+    </form>
+  </div>
+
+  <div class="post">
+   <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
+    <form class="h-adr">
+    <span class="p-country-name" style="display:none;">Japan</span>
+    〒<input type="text" class="p-postal-code" size="8" maxlength="8"><br>
+    <input type="text" class="p-region p-locality p-street-address p-extended-address">
+    </form>
+  </div>
+  
+
+<div id="map" style="margin:0 auto; margin-top:20px;"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 35.658034 , lng: 139.701636},
+          zoom: 8
+        });
+      }
+    </script>
+
+<div class ="location">
+  <p hidden>緯度・経度を表示する<br>
+     緯度 <input type="text" id="lat" value=""><br>
+     経度 <input type="text" id="lng" value=""><br>
+     地図上をクリックしてね!!</p>
+</div>
+
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs15KZU0NZXU5gd_-7wssqOrBFg25rKXs&callback=initMap"></script>
+
+<script>
+
+
+ var getMap = (function() {
+  function codeAddress(address) {
+   
+    var geocoder = new google.maps.Geocoder();
+ 
+   
+    var mapOptions = {
+      zoom: 16,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+ 
+    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+ 
+    var marker;
+     
+   
+    geocoder.geocode( { 'address': address}, function(results, status) {
+       
+
+      if (status == google.maps.GeocoderStatus.OK) {
+         
+       
+        map.setCenter(results[0].geometry.location);
+         
+       
+        document.getElementById('lat').value=results[0].geometry.location.lat();
+        document.getElementById('lng').value=results[0].geometry.location.lng();
+         
+      
+        marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+        });
+       
+      
+      } else {
+        console.log('Geocode was not successful for the following reason: ' + status);
+      }
+     
+    });
+ 
+    map.addListener('click', function(e) {
+      getClickLatLng(e.latLng, map);
+    });
+    function getClickLatLng(lat_lng, map) {
+       
+
+      document.getElementById('lat').value=lat_lng.lat();
+      document.getElementById('lng').value=lat_lng.lng();
+         
+
+      marker.setMap(null);
+      marker = new google.maps.Marker({
+        position: lat_lng,
+        map: map
+      });
+     
+      
+      map.panTo(lat_lng);
+    }
+   
+  }
+   
+ 
+  return {
+    getAddress: function() {
+   
+      var button = document.getElementById("map_button");
+       
+   
+      button.onclick = function() {
+      
+        var address = document.getElementById("address").value;
+      
+        codeAddress(address);
+      }
+       
+     
+      window.onload = function(){
+      
+        var address = document.getElementById("address").value;
+        
+        codeAddress(address);
+      }
+    }
+   
+  };
+ 
+})();
+getMap.getAddress();
+
+
+</script>
+
