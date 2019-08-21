@@ -75,3 +75,5 @@ gem 'geokit-rails'
 gem 'amazon-ecs'
 gem 'magnific-popup-rails', '~> 1.1.0'
 gem 'dotenv-rails'
+gem 'sqlite3', group: [:development, :test]
+gem 'pg', group: :production
