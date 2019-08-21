@@ -48,6 +48,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'sqlite3'
 end
 
 group :test do
@@ -75,5 +76,3 @@ gem 'geokit-rails'
 gem 'amazon-ecs'
 gem 'magnific-popup-rails', '~> 1.1.0'
 gem 'dotenv-rails'
-gem 'sqlite3', group: [:development, :test]
-gem 'pg', group: :production
