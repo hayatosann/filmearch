@@ -4,7 +4,7 @@ wait = Selenium::WebDriver::Wait.new(timeout: 80)
 driver.navigate.to 'https://filmarks.com/list/genre/8'
   
 # driver.find_elements(:xpath, '//img')
-element=driver.find_element(:xpath, '/html/body/div[4]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div[4]/a').click
+element=driver.find_element(:xpath, '/html/body/div[4]/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]/div[6]/a')
   detail = driver.find_element(:xpath, '//*[@id="js-content-detail-synopsis"]/div/div/button').click
   more_detail = driver.find_element(:id, 'js-content-detail-synopsis').text
  puts more_detail
