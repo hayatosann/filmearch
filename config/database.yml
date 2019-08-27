@@ -52,3 +52,6 @@ production:
   database: filmarks_production
   username: filmarks
   password: <%= ENV['FILMARKS_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
