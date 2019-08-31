@@ -1,3 +1,76 @@
-product = Product.create(title: "アウトレイジ",image_url:"https://d2ueuvlup6lbue.cloudfront.net/attachments/78056c2970c821757a7e70a139802c66d83def8f/store/fitpad/260/364/99af5ad11e112d63be5ee576cccc67fd6c83d56107078cd34ecabbba9e5f/_.jpg",director:"北野武")
-product = Product.create(title: "イミテーション・ゲーム／エニグマと天才数学者の秘密",image_url:"https://d2ueuvlup6lbue.cloudfront.net/attachments/b7ee6a2c77ecd427d695ce8fcc5530c71aaa3673/store/fitpad/260/364/c2a67bffe89b126b572c711630015de63b04d5649bab415d38c0bba86ffd/_.jpg",director:"モルテン・ティルドゥム")
-# product = Product.create(title: "ダンケルク",image_url:"https://d2ueuvlup6lbue.cloudfront.net/attachments/ef91b6784b688edcffb61a315098a15c6857973b/store/fitpad/260/364/f247bf0a58b11ec3bf144e60d5450c6ebbdfa5d632dc279b00ee59dd7dfd/_.jpg",director:"アンリ・ヴェルヌイユ")
+class Scraping
+  def self.movie_total
+    links = []
+    agent = Mechanize.new
+    agent.user_agent_alias = 'Windows Mozilla'
+    movie_urls("https://filmarks.com/list/genre/8")
+    # current_page = agent.get('https://filmarks.com/list/genre')
+    # elements = current_page.search('.c-list-line__item--has-bar a')
+    # elements.each do |ele|
+    #  links << ele.get_attribute('href')
+    # end
+
+    # links.each do |link|
+    #   movie_urls('https://filmarks.com' + link)
+    # end
+  end
+
+
+  def self.movie_urls(link)
+    links = []
+    agent = Mechanize.new
+    agent.user_agent_alias = 'Windows Mozilla'
+    # agent.user_agent_alias = 'Windows Chrome'
+    next_url = ""
+
+    while true
+      # p next_url
+      current_page = agent.get(link + next_url)
+      elements = current_page.search('.p-movie-cassette__people__readmore .p-movie-cassette__readmore')
+      elements.each do |ele|
+        links << ele.get_attribute('href')
+      end
+      # p links
+
+      next_link = current_page.at('a.c-pagination__next')
+      break unless next_link
+      next_url = next_link.get_attribute('href')
+      idx = next_url.index("?")
+      next_url = next_url[idx..-1]
+    end
+
+    links.each do |link|
+    
+      get_product('https://filmarks.com' + link)
+    end
+  end
+    
+   def self.get_product(link)
+    agent = Mechanize.new
+    agent.user_agent_alias = 'Windows Mozilla'
+    page = agent.get(link)
+    title = page.search('.p-content-detail__title span').inner_text if page.search('.p-content-detail__title span')
+    image_url = page.at('.c-content__jacket img')[:src] if page.at('.c-content__jacket img')
+    open_date = page.at('.p-content-detail__other-info-title').inner_text.match(/\d+年\d+月\d+日/) if page.at('.p-content-detail__other-info-title')
+    director = page.at('.c-label').inner_text if page.at('.c-label')
+    # detail = page.at("#js-content-detail-synopsis").inner_text
+    product = Product.where(title: title).first_or_initialize
+    product.title = title
+    product.image_url = image_url
+    product.open_date = open_date
+    product.director = director
+
+    # product.save
+    puts title
+    
+    puts image_url
+    # product.save
+    # puts detail
+    # puts title
+    # puts image_url
+     puts open_date
+     puts director
+   end
+end
+
+Scraping.movie_total
