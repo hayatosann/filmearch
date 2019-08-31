@@ -3,7 +3,7 @@ class Scraping
     links = []
     agent = Mechanize.new
     agent.user_agent_alias = 'Windows Mozilla'
-    movie_urls("https://filmarks.com/list/genre/902")
+    movie_urls("https://filmarks.com/list/genre/25")
     # current_page = agent.get('https://filmarks.com/list/genre')
     # elements = current_page.search('.c-list-line__item--has-bar a')
     # elements.each do |ele|
