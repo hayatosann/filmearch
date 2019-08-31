@@ -60,7 +60,7 @@ class Scraping
     product.open_date = open_date
     product.director = director
 
-    # product.save
+    product.save
     puts title
     
     puts image_url
