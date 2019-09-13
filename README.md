@@ -115,8 +115,8 @@ eachによる変数`product`を用いて、一つ一つの映画作品を`produc
 - belongs_to :product, counter_cache: :likes_count
 - belongs_to :user
 
-# 機能
-## 非login時
+# function&behavior
+## loged off
 [![Image from Gyazo](https://i.gyazo.com/ba7861c0e51961b34974e99db5af5502.gif)](https://gyazo.com/ba7861c0e51961b34974e99db5af5502)
 ## sign up
 [![Image from Gyazo](https://i.gyazo.com/732c67d6ab49bac7a09db16c5e7bc046.gif)](https://gyazo.com/732c67d6ab49bac7a09db16c5e7bc046)
