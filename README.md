@@ -32,7 +32,7 @@ https://filmearch.herokuapp.com/
  - 映画情報のデータ収集(Scraping使用)
  [![Image from Gyazo](https://i.gyazo.com/bb012ddf93429859f2fc6f8c7a45117d.png)](https://gyazo.com/bb012ddf93429859f2fc6f8c7a45117d)
  [![Image from Gyazo](https://i.gyazo.com/46d7dbf623909bded96e44a8821f1566.png)](https://gyazo.com/46d7dbf623909bded96e44a8821f1566)
- データ参照元のサイトでは一覧で映画情報を記載してある訳ではなく、ジャンルカテゴリーに分類され、一つ一つのジャンルに対して映画が情報がページネーションされて参照できる作りであった。
+ データ参照元のサイトでは一覧で映画情報を記載してある訳ではなく、ジャンルカテゴリーに分類され、一つ一つのジャンルに対して映画の情報がページネーションされて参照できる構造であった。
  当初、scrapingする際には1枚目画像におけるジャンルのurlを取得し、2枚目の画像先に遷移し、一つのジャンルに対して2枚目画像における右側の映画情報を取得するという方法を取っていたが、eachにおける処理、それから元データの量も多く、scrapingに相当な時間がかかってしまったため、2枚目画像のページから一回一回ジャンルのurlを手入力で入力し、1枚目画像におけるジャンルを取得するeach処理を自分で行なうことにより時間、pcへの負担を軽減した。
  [![Image from Gyazo](https://i.gyazo.com/cbebf3bb29a6cd3290a7d86268583a3c.png)](https://gyazo.com/cbebf3bb29a6cd3290a7d86268583a3c)
  上記画像のコメントアウトがない状態で、つまり一回のScrapingで全データを取得しようとしたが処理が重いため、コメントアウトを施し、`movie_urls("当初は参照先大元のurl")`を`movie_urls("各ジャンルurl")`と変更。
