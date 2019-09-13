@@ -43,7 +43,7 @@ https://filmearch.herokuapp.com/
  
 - modal windowの実装
 [![Image from Gyazo](https://i.gyazo.com/bc75e70e304ca7de36e7fda94c44634c.png)](https://gyazo.com/bc75e70e304ca7de36e7fda94c44634c)
-eachによる変数`product`を用いて、一つ一つの映画作品を`product.id`として取り出していたが、modalとの結びつけがどのように記載すれば上手く処理できるのかということに多くの時間、頭を悩ませていたが、`data-target="#Modal<%= product.id %>`と記載することでmodalと各作品がひも付き、レビューが保存されるように実装可能となった。
+eachによる変数`product`を用いて、一つ一つの映画作品を`product.id`として取り出していて、modalとの結びつきをどのように記載すれば上手く処理できるのかということに多くの時間、頭を悩ませていたが、`data-target="#Modal<%= product.id %>`と記載することでmodalと各作品がひもづき、レビューが保存されるように実装可能となった。
 
 - sliderと数値の連動
 この部分の実装としては、自己研鑽によるものなので割愛する。
