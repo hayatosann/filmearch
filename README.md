@@ -120,7 +120,7 @@ eachによる変数`product`を用いて、一つ一つの映画作品を`produc
 [![Image from Gyazo](https://i.gyazo.com/ba7861c0e51961b34974e99db5af5502.gif)](https://gyazo.com/ba7861c0e51961b34974e99db5af5502)
 ## sign up
 [![Image from Gyazo](https://i.gyazo.com/732c67d6ab49bac7a09db16c5e7bc046.gif)](https://gyazo.com/732c67d6ab49bac7a09db16c5e7bc046)
-## modal windowとslider
+## modal window&slider
 [![Image from Gyazo](https://i.gyazo.com/06eecffe8ca3dc80442479481d33cf45.gif)](https://gyazo.com/06eecffe8ca3dc80442479481d33cf45)
 ## Ranking Display
 [![Image from Gyazo](https://i.gyazo.com/9e73117c13f2ba40949defaa9b9fe9a6.gif)](https://gyazo.com/9e73117c13f2ba40949defaa9b9fe9a6)
