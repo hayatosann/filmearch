@@ -1,6 +1,8 @@
 # filmsearch
-# url
+## url
 https://filmearch.herokuapp.com/
+
+# 制作理由
 
 このアプリケーションを作成した目的として以下をあげる:
 
