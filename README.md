@@ -1,5 +1,5 @@
 # filmsearch
-## url
+## URL
 https://filmearch.herokuapp.com/
 
 # 制作理由
@@ -117,3 +117,36 @@ eachによる変数`product`を用いて、一つ一つの映画作品を`produc
 ### Association
 - belongs_to :product, counter_cache: :likes_count
 - belongs_to :user
+
+# 機能
+## 非login時
+[![Image from Gyazo](https://i.gyazo.com/ba7861c0e51961b34974e99db5af5502.gif)](https://gyazo.com/ba7861c0e51961b34974e99db5af5502)
+## sign up
+[![Image from Gyazo](https://i.gyazo.com/732c67d6ab49bac7a09db16c5e7bc046.gif)](https://gyazo.com/732c67d6ab49bac7a09db16c5e7bc046)
+## modal windowとslider
+[![Image from Gyazo](https://i.gyazo.com/06eecffe8ca3dc80442479481d33cf45.gif)](https://gyazo.com/06eecffe8ca3dc80442479481d33cf45)
+## Ranking Display
+[![Image from Gyazo](https://i.gyazo.com/9e73117c13f2ba40949defaa9b9fe9a6.gif)](https://gyazo.com/9e73117c13f2ba40949defaa9b9fe9a6)
+## search
+[![Image from Gyazo](https://i.gyazo.com/526130e93962b4167d68a726ac208235.gif)](https://gyazo.com/526130e93962b4167d68a726ac208235)
+## look for theater
+[![Image from Gyazo](https://i.gyazo.com/b81e85d23f5a582ea8daf19475a8930f.gif)](https://gyazo.com/b81e85d23f5a582ea8daf19475a8930f)
+## look for theater with address
+[![Image from Gyazo](https://i.gyazo.com/0c40327d0e2c4bacc85d9c38dd24077b.gif)](https://gyazo.com/0c40327d0e2c4bacc85d9c38dd24077b)
+[![Image from Gyazo](https://i.gyazo.com/f65a051a4471b39dc4c48230f1962f68.gif)](https://gyazo.com/f65a051a4471b39dc4c48230f1962f68)
+## usermypage
+[![Image from Gyazo](https://i.gyazo.com/013978de22c159c585af837036de8d2c.png)](https://gyazo.com/013978de22c159c585af837036de8d2c)
+
+# 課題
+## データの充実度
+現状、映画のあらすじを取得できていない状態である。というのもScrapingでは元サイトのjavascriptが使用されている箇所から取得できないためである。Scrapingを使用した理由としてはカリキュラムの基礎復習であるため、より実践的なサイトとして運用するにはAPIを使用したいと考えています。
+`THE MOVIE DB :https://www.themoviedb.org/`を使用したいと思い、APIは既に取得しているため、そのコード処理を実装していきたいと考えています。
+
+## user page,chat機能の追加
+スクールカリキュラムにおいて、chatAPPを作成したので、その復習やアウトプットとしてuser同士が映画情報を交換できるようにchat機能にも挑戦したいところである。
+
+## category,genreにおける分類
+現状、index画面では映画情報が無作為に並べられておりpagenationで数十ページと、見た目も宜しくないので、カテゴリー別に分類していきたいところである。
+
+## gitにおけるcommit,branch作成の精度と意識
+このアプリ作成後にスクールにおいて実施されたグループ開発においてcommitの精度とブランチを機能ごとに作っていくことにの大切さを痛感しました。グループ開発において学習したことを活かすためにも、今後個人で開発を進めていく際にはbranch、commitの作成には特に意識を置いて実装していきたいところです。
