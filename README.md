@@ -39,7 +39,7 @@ https://filmearch.herokuapp.com/
  
 - いいね機能の実装
  [![Image from Gyazo](https://i.gyazo.com/59594d8f9787ae97909276c4feedaa71.png)](https://gyazo.com/59594d8f9787ae97909276c4feedaa71)
- `destroy.js.erb`において`par.attr('method', 'POST');`の記載をしているにも関わらず、『いいね』を取り消そうとすると、console上にて次のエラーが確認された。エラー内容は`'method','get'`となってしまう現象であり、このエラーをなかなか解決できないでいたが、上記画像における`create.js.erb`における3~5行目を記載することで問題を解決し、非同期にて『いいね取り消し』が可能となった。
+ `destroy.js.erb`において`par.attr('method', 'POST');`の記載をしているにも関わらず、『いいね』を取り消そうとすると、console上にて次のエラーが確認された。エラー内容は`'method','get'`となってしまう現象であり、このエラーをなかなか解決できないでいたが、上記画像の`create.js.erb`における3~5行目を記載することで問題を解決し、非同期にて『いいね取り消し』が可能となった。
  
 - modal windowの実装
 [![Image from Gyazo](https://i.gyazo.com/bc75e70e304ca7de36e7fda94c44634c.png)](https://gyazo.com/bc75e70e304ca7de36e7fda94c44634c)
