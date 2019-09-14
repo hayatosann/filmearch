@@ -118,7 +118,7 @@ eachによる変数`product`を用いて、一つ一つの映画作品を`produc
 # function&behavior
 ## logged off
 [![Image from Gyazo](https://i.gyazo.com/ba7861c0e51961b34974e99db5af5502.gif)](https://gyazo.com/ba7861c0e51961b34974e99db5af5502)
-## sign up
+## sign up&good function
 [![Image from Gyazo](https://i.gyazo.com/732c67d6ab49bac7a09db16c5e7bc046.gif)](https://gyazo.com/732c67d6ab49bac7a09db16c5e7bc046)
 ## modal window&slider
 [![Image from Gyazo](https://i.gyazo.com/06eecffe8ca3dc80442479481d33cf45.gif)](https://gyazo.com/06eecffe8ca3dc80442479481d33cf45)
