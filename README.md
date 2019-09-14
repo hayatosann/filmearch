@@ -11,7 +11,7 @@ https://filmearch.herokuapp.com/
 * スクールでの学びのアウトプット
 　（ranking表示、pagination機能、devise機能、review投稿機能実装）
 
-* 経験にない実装の挑戦(javascriptを使用したslider機能、modal windowの作成、google map apiによる映画館を探す機能の実装、いいね機能の実装)
+* 経験にない実装への挑戦(javascriptを使用したslider機能、modal windowの作成、google map apiによる映画館を探す機能の実装、いいね機能の実装)
 
 * 今後の課題
 　映画館を探す機能におけるユーザーの位置情報埋め込み、user同士におけるチャット画面の実装、映画サイトのカテゴリー分類
